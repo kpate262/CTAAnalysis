@@ -1,0 +1,82 @@
+@page
+@model StopInfoModel
+@{
+  ViewData["Title"] = "Stop Information";
+}
+
+<h2>Stop Information</h2>  
+
+<br />
+Your search string: "@Model.Input"
+<br />
+# of Stops found: @Model.StopList.Count
+<br />
+<br />
+@{
+   if (@Model.EX != null)
+	 {
+		 <h3>**ERROR: @Model.EX.Message</h3>
+		 <br />
+		 <hr />
+		 <br />
+		 <br />
+	 }
+}
+
+<table class="table">  
+    <thead>  
+        <tr>   
+            <th>  
+                StopID
+            </th>  
+						<th>  
+                Name
+            </th>  
+            <th>  
+                Direction
+            </th>
+            <th>  
+                Handicap Stop?
+            </th>  
+            <th>  
+                Latitude
+            </th>  
+            <th>  
+                Longitude
+            </th>  
+            <th>  
+                Line Color
+            </th>  
+        </tr>  
+    </thead>  
+    <tbody>  
+        @foreach (var item in Model.StopList)  
+        {  
+            <tr>  
+                <td>  
+										@item.StopID
+                </td>  
+                <td>  
+                    @item.StopName
+                </td> 
+								<td>  
+                    @item.Direction
+                </td> 
+                <td>  
+                    @item.HandiCap
+                </td> 
+                <td>  
+                    @item.Latitude
+                </td> 
+                <td>  
+                    @item.Longitude
+                </td> 
+                <td>  
+                    @item.LineColor
+                </td> 
+                
+            </tr>  
+        }  
+    </tbody>  
+</table> 
+
